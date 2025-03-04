@@ -7,8 +7,9 @@ import org.junit.jupiter.api.Test;
 class StudentDLLTest {
 
 	@Test
-	void test() {
-		fail("Not yet implemented");
+	void Inittest() {
+		DoubleLinkedList<Station> l1 = new DoubleLinkedList<>();
+		
 	}
 
 }

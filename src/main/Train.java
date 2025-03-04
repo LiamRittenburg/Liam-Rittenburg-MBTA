@@ -5,45 +5,112 @@ public class Train {
 	public static final int TOTAL_PASSENGERS = 10;
 	public Rider[] passengers;
 	public int passengerIndex;
+	private String current;
+	private boolean goingNorth;
 	
 	public Train(String currentStation, int direction) {
-		
+		this.current = currentStation;
+		if(direction > 0)
+		{
+			goingNorth = false;
+		}
+		else
+		{
+			goingNorth = true;
+		}
 	}
 	
 	public boolean goingNorth() {
-		return false;
+		return this.goingNorth;
 	}
 	
 	public void swapDirection() {
-		
+		if(goingNorth())
+		{
+			goingNorth = false;
+		}
+		else
+		{
+			goingNorth = true;
+		}
 	}
 	
 	public String currentPassengers() {
-		return null;
+		String p = "";
+		for(int i = 0; i < passengerIndex; i++)
+		{
+			p = p + passengers[i].toString() + "\n";
+		}
+		return p;
 	}
 	
 	public boolean addPassenger(Rider r) {
-		return false;
+		if(r.getStatring().equals(getStation()) && r.goingNorth() == goingNorth() && hasSpaceForPassengers())
+		{
+			passengers[passengerIndex] = r;
+			passengerIndex++;
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 	
 	public boolean hasSpaceForPassengers() {
-		return false;
+		if(passengerIndex < TOTAL_PASSENGERS)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 	
 	public String disembarkPassengers() {
-		return null;
+		String exiting = "";
+		Rider[] tmp = new Rider[TOTAL_PASSENGERS];
+		int tmpInd = 0;
+		for(int i = 0; i < passengerIndex; i++)
+		{
+			if((passengers[i].getDestination()).equals(getStation()))
+			{
+				exiting = exiting + passengers[i].toString() + "\n";
+				passengers[i] = null;
+			}
+		}
+		for(int j = 0; j < TOTAL_PASSENGERS; j++)
+		{
+			if(passengers[j] instanceof Rider)
+			{
+				tmp[tmpInd] = passengers[j];
+				tmpInd++;
+			}
+		}
+		passengers = tmp;
+		return exiting;
 	}
 	
 	public void updateStation(String s) {
-		
+		current = s;
 	}
 	
 	public String getStation() {
-		return null;
+		return current;
 	}
 	
 	@Override
 	public String toString() {
-		return null;
+		String direction = "";
+		if(goingNorth())
+		{
+			direction = "North";
+		}
+		else
+		{
+			direction = "South";
+		}
+		return direction + "-bound train at " + getStation() + " carrying " + passengerIndex + " passengers.";
 	}
 }

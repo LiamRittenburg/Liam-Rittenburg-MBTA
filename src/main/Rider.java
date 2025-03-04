@@ -2,37 +2,60 @@ package main;
 
 public class Rider {
 
+	private String ID;
+	private String starting;
+	private String destination;
+	private boolean goingNorth;
+
 	public Rider(String riderID, String startingStation, String destinationStation) {
-		
+		this.ID = riderID;
+		this.starting = startingStation;
+		this.destination = destinationStation;
+		this.goingNorth = false;
 	}
 	
 	public String getStarting() {
-		return null;
+		return this.starting;
 	}
 	
 	public String getDestination() {
-		return null;
+		return this.destination;
 	}
 	
 	public String getRiderID() {
-		return null;
+		return this.ID;
 	}
 	
 	public boolean goingNorth() {	
-		return false;
+		return this.goingNorth;
 	}
 	
 	public void swapDirection() {
-		
+		if(goingNorth())
+		{
+			goingNorth = false;
+		}
+		else
+		{
+			goingNorth = true;
+		}
 	}
 	
 	@Override
 	public String toString() {
-		return null;
+		return ID + ", " + destination;
 	}
 	
 	@Override
 	public boolean equals(Object s) {
-		return false;
+		if(s instanceof Rider)
+		{
+			Rider other = (Rider) s;
+			return other.getRiderID() == getRiderID();
+		}
+		else
+		{
+			return false;
+		}
 	}
 }
