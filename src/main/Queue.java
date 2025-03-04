@@ -31,7 +31,7 @@ public class Queue<T> {
 	{ 
 		if(numEntries == 0)
 		{
-			return NoSuchElementException;
+			throw new NoSuchElementException();
 		}
 		else
 		{
@@ -43,7 +43,7 @@ public class Queue<T> {
 	public T front() {
 		if(numEntries == 0)
 		{
-			return NoSuchElementException;
+			throw new NoSuchElementException();
 		}
 		else
 		{

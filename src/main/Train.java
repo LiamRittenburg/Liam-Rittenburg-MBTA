@@ -45,7 +45,7 @@ public class Train {
 	}
 	
 	public boolean addPassenger(Rider r) {
-		if(r.getStatring().equals(getStation()) && r.goingNorth() == goingNorth() && hasSpaceForPassengers())
+		if(r.getStarting().equals(getStation()) && r.goingNorth() == goingNorth() && hasSpaceForPassengers())
 		{
 			passengers[passengerIndex] = r;
 			passengerIndex++;

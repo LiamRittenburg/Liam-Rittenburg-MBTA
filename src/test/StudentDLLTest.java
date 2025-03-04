@@ -8,7 +8,7 @@ class StudentDLLTest {
 
 	@Test
 	void Inittest() {
-		DoubleLinkedList<Station> l1 = new DoubleLinkedList<>();
+		//DoubleLinkedList<Station> l1 = new DoubleLinkedList<>();
 		
 	}
 

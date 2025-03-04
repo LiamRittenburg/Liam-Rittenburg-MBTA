@@ -16,12 +16,12 @@ public class DoubleLinkedList<T> {
 	
 	
 	public void insert(T element) {
-		Node<T> newNode = new Node(element);
+		Node<T> newNode = new Node<T>(element);
 		if(L == null)
 		{
 			L = newNode;
 			len++;
-			curr = element;
+			curr = newNode;
 		}
 		else
 		{
@@ -33,7 +33,7 @@ public class DoubleLinkedList<T> {
 	
 	public T delete(T key) {
 		T retKey = null;
-		Node<T> trav = new Node(key);
+		Node<T> trav = new Node<T>(key);
 		if(size() > 0)
 		{
 			trav = L;
@@ -58,13 +58,13 @@ public class DoubleLinkedList<T> {
 	
 	public T get(T key) {
 		T retKey = null;
-		Node<T> trav = new Node(key);
+		Node<T> trav = new Node<T>(key);
 		if(size() > 0)
 		{
 			trav = L;
 			while(trav != null)
 			{
-				if(trav.getData() == key)
+				if(trav.getData().equals(key))
 				{
 					retKey = key;
 					return retKey;

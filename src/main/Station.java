@@ -37,7 +37,7 @@ public class Station {
 	
 	public String addTrain(Train t) {
 		String enter = stationName() + " Disembarking Passengers:\n";
-		t.updateStation(stationName);
+		t.updateStation(stationName());
 		enter = enter + t.disembarkPassengers() + "\n";
 		if(t.goingNorth())
 		{
@@ -47,6 +47,7 @@ public class Station {
 		{
 			southBoundTrains.enqueue(t);
 		}
+		return enter;
 	}
 	
 	public Train southBoardTrain() 
