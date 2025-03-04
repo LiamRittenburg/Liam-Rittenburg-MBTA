@@ -27,6 +27,7 @@ public class DoubleLinkedList<T> {
 		{
 			newNode.setPrev(curr);
 			curr.setNext(newNode);
+			curr = newNode;
 			len++;
 		}
 	}
@@ -57,16 +58,14 @@ public class DoubleLinkedList<T> {
 	}
 	
 	public T get(T key) {
+		Node<T> trav = L;
 		T retKey = null;
-		Node<T> trav = new Node<T>(key);
-		if(size() > 0)
 		{
-			trav = L;
 			while(trav != null)
 			{
 				if(trav.getData().equals(key))
 				{
-					retKey = key;
+					retKey = trav.getData();
 					return retKey;
 				}
 				else
@@ -74,8 +73,8 @@ public class DoubleLinkedList<T> {
 					trav = trav.getNext();
 				}
 			}
+			return retKey;
 		}
-		return retKey;
 	}
 	
 	public int size() {

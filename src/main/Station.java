@@ -121,10 +121,11 @@ public class Station {
 	
 	@Override
 	public boolean equals(Object o) {
-		if (o instanceof String)
+		if (o instanceof Station)
 		{
-			String other = (String) o;
-			return other.equals(o);
+			Station other = (Station) o;
+			String otherName = other.stationName();
+			return otherName.equals(name);
 		}
 		else
 		{

@@ -22,7 +22,10 @@ public class Railway {
 	}
 	
 	public void addTrain(Train t) {
-		
+		String station = t.getStation();
+		Station copy = new Station(station);
+		Station real = railway.get(copy);
+		real.addTrain(t);
 	}
 	
 	public void setRiderDirection(Rider r) {
@@ -33,11 +36,11 @@ public class Railway {
 		boolean north = false;
 		for(int i = 0; i < stationNames.length; i++)
 		{
-			if(stationNames[i] == start)
+			if(stationNames[i].equals(start))
 			{
 				startInd = i;
 			}
-			if(stationNames[i] == end)
+			if(stationNames[i].equals(end))
 			{
 				endInd = i;
 			}
@@ -69,30 +72,40 @@ public class Railway {
 	public String simulate() {
 		String sim = "";
 		Node<Station> curr = railway.getFirst();
-		if((curr.getData()).equals(stationNames[0]))
+		while(curr != null)
 		{
-			//special case
+			Station currStation = curr.getData();
+			if(currStation.equals(stationNames[0]))
+			{
+				//special case
+			}
+			if(currStation.equals(stationNames[stationNames.length - 1]))
+			{
+				//special case
+			}
+			else
+			{
+				if((currStation.northBoundTrains).size() > 0)
+				{
+					Train t_N = currStation.northBoardTrain();
+					t_N.updateStation(curr.getNext().getData().stationName());
+					sim = sim + t_N.disembarkPassengers();
+				}
+				if((currStation.southBoundTrains).size() > 0)
+				{
+					Train t_S = currStation.southBoardTrain();
+					t_S.updateStation(curr.getNext().getData().stationName());
+					sim = sim + t_S.disembarkPassengers();
+				}
+			}
+			sim = sim + currStation.toString();
+			curr = curr.getNext();
 		}
-		if((curr.getData()).equals(stationNames[stationNames.length - 1]))
-		{
-			//special case
-		}
-		else
-		{
-			Train t_N = curr.getData().northBoardTrain();
-			Train t_S = curr.getData().southBoardTrain();
-			t_N.updateStation(curr.getNext().getData().stationName());
-			t_S.updateStation(curr.getPrev().getData().stationName());
-			sim = sim + t_N.disembarkPassengers();
-			sim = sim + t_S.disembarkPassengers();
-			sim = sim + curr.getNext().toString();
-		}
-		curr = curr.getNext();
 		return sim;
 	}
 	
 	@Override
 	public String toString() {
-		return null;
+		return "" + railway.size();
 	}
 }

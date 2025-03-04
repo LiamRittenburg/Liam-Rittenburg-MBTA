@@ -72,15 +72,17 @@ public class Train {
 		String exiting = "";
 		Rider[] tmp = new Rider[TOTAL_PASSENGERS];
 		int tmpInd = 0;
+		int exited = 0;
 		for(int i = 0; i < passengerIndex; i++)
 		{
 			if((passengers[i].getDestination()).equals(getStation()))
 			{
 				exiting = exiting + passengers[i].toString() + "\n";
 				passengers[i] = null;
+				exited++;
 			}
 		}
-		for(int j = 0; j < TOTAL_PASSENGERS; j++)
+		for(int j = 0; j < passengerIndex - exited; j++)
 		{
 			if(passengers[j] instanceof Rider)
 			{
