@@ -83,7 +83,7 @@ public class Train {
 				exited++;
 			}
 		}
-		for(int j = 0; j < passengerIndex - exited; j++)
+		for(int j = 0; j < passengerIndex - exited + 1; j++)
 		{
 			if(passengers[j] != null)
 			{

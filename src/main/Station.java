@@ -39,11 +39,12 @@ public class Station {
 		String enter = null;
 		if(t != null)
 		{
+			t.updateStation(stationName());
 			String exiters = t.disembarkPassengers();
 			if(exiters.length() > 0)
 			{
-				enter = stationName() + ": \n";
-				enter = enter + exiters + "\n";
+				enter = stationName() + " Disembarking Passenger: \n";
+				enter = enter + exiters;
 			}
 			//t.updateStation(stationName());
 			

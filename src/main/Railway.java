@@ -91,6 +91,7 @@ public class Railway {
 				sim = sim + currStation.toString() + "\n";
 				Train t_N = currStation.northBoardTrain();
 				sim = sim + curr.getPrev().getData().addTrain(t_N);
+				sim = sim + "\n------------\n" + "\n";
 				currStation.moveTrainSouthToNorth();
 				curr = curr.getNext();
 			}
