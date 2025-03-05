@@ -1,5 +1,8 @@
 package main;
 import java.util.Scanner;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 

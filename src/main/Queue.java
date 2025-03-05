@@ -15,15 +15,21 @@ public class Queue<T> {
 	}
 	
 	public void enqueue(T element) {
-		q[tail] = element;
-		if(tail == q.length)
+		if(size() < q.length)
 		{
-			tail = 1;
-		}
-		else
-		{
-			tail++;
-			numEntries++;
+			if(tail == q.length)
+			{
+				tail = 0;
+				q[tail] = element;
+				tail++;
+				numEntries++;
+			}
+			else
+			{
+				q[tail] = element;
+				tail++;
+				numEntries++;
+			}
 		}
 	}
 	
@@ -31,19 +37,21 @@ public class Queue<T> {
 	{ 
 		if(numEntries == 0)
 		{
-			throw new NoSuchElementException();
+			throw new NoSuchElementException("Error: empty Queue");
 		}
 		else
 		{
+			q[head] = null;
 			head = (head + 1) % q.length;
 			numEntries--;
+			//tail--;
 		}
 	}
 	
 	public T front() {
 		if(numEntries == 0)
 		{
-			throw new NoSuchElementException();
+			throw new NoSuchElementException("Error: empty Queue");
 		}
 		else
 		{
@@ -58,6 +66,19 @@ public class Queue<T> {
 	
 	@Override
 	public String toString() {
-		return null;
+		String ret = "";
+		int i = 0;
+		int index = head;
+		while(i < size() - 1)
+		{
+			ret = ret + q[index].toString() + ", ";
+			i++;
+			index = index + 1 % q.length;
+		}
+		if(size() > 0)
+		{
+			ret = ret + q[tail - 1].toString();
+		}
+		return ret;
 	}
 }
