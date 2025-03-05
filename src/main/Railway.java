@@ -113,6 +113,14 @@ public class Railway {
 	
 	@Override
 	public String toString() {
-		return "" + railway.size();
+		String ret = "";
+		Node<Station> curr = railway.getFirst();
+		while(curr != null)
+		{
+			Station currStation = curr.getData();
+			ret = ret + currStation.toString();
+			curr = curr.getNext();
+		}
+		return ret;
 	}
 }
