@@ -1,3 +1,13 @@
+/**
+ * This class constructs Station(String name), and the addRider(Rider r), addTrain(Train t), southBoardTrain(),
+ * northBoardTrain(), moveTrainNorthToSouth(), moveTrainSouthToNorth(), toString(), stationName(), and equals(Object o) methods. 
+ * Known bugs: None
+ * 
+ * Liam Rittenburg
+ * liamrittenburg@brandeis.edu
+ * March 2025
+ * COSI 21A PA1
+ */
 package main;
 
 public class Station {
@@ -8,6 +18,11 @@ public class Station {
 	public Queue<Train> southBoundTrains;
 	private String name;
 	
+	/**
+	 * This constructor initializes a Station object with rider and train queues initialized with capacities of 20,
+	 * and sets name equal to the argument name.
+	 * @param name
+	 */
 	public Station(String name) {
 		northBoundRiders = new Queue(20);
 		southBoundRiders = new Queue(20);
@@ -16,6 +31,12 @@ public class Station {
 		this.name = name;
 	}
 	
+	/**
+	 * If a rider is at the appropriate starting station, this method adds that rider to the appropriate queue based
+	 * on their direction and returns true. Otherwise false is returned.
+	 * @param r
+	 * @return
+	 */
 	public boolean addRider(Rider r) { 
 		if(r.getStarting().equals(stationName()))
 		{
@@ -35,6 +56,14 @@ public class Station {
 		}
 	}
 	
+	/**
+	 * If the train object passed to this method is not null, this method moves the train into the station, disembarks
+	 * its passengers at the updated station, and adds the train to the appropriate queue based on its direction and
+	 * returns a String representing the disembarked passengers (if any). If the train object passed is null, and empty
+	 * String is returned.
+	 * @param t
+	 * @return
+	 */
 	public String addTrain(Train t) {
 		String enter = null;
 		if(t != null)
@@ -66,6 +95,11 @@ public class Station {
 		}
 	}
 	
+	/**
+	 * This method removed a southBoundTrain from its queue, and boards the train with passengers (as long as there is space).
+	 * The subsequent train object is returned.
+	 * @return
+	 */
 	public Train southBoardTrain() 
 	{
 		Train t = null;
@@ -83,6 +117,11 @@ public class Station {
 		return t;
 	}
 	
+	/**
+	 * This method removed a northBoundTrain from its queue, and boards the train with passengers (as long as there is space).
+	 * The subsequent train object is returned.
+	 * @return
+	 */
 	public Train northBoardTrain() 
 	{
 		Train t = null;
@@ -100,6 +139,10 @@ public class Station {
 		return t;
 	}
 	
+	/**
+	 * If the northBoundTrain queue of this station has one or more trains in it, this method
+	 * changes the direction of that train and adds it to the queue of the opposite direction.
+	 */
 	public void moveTrainNorthToSouth() {
 		if(northBoundTrains.size() > 0)
 		{
@@ -111,6 +154,10 @@ public class Station {
 
 	}
 	
+	/**
+	 * If the southBoundTrain queue of this station has one or more trains in it, this method
+	 * changes the direction of that train and adds it to the queue of the opposite direction.
+	 */
 	public void moveTrainSouthToNorth() {
 		if(southBoundTrains.size() > 0)
 		{
@@ -121,6 +168,10 @@ public class Station {
 		}
 	}
 	
+	/**
+	 * This method returns a string representation of the station object, indicating the station name
+	 * and the size of each queue.
+	 */
 	@Override
 	public String toString() {
 		String station = "Station: " + stationName() + "\n";
@@ -131,10 +182,18 @@ public class Station {
 		return station;
 	}
 	
+	/**
+	 * This method returns the String representation of the name of this station.
+	 * @return
+	 */
 	public String stationName() {
 		return this.name;
 	}
 	
+	/**
+	 * Thhis method compares station objects based on name. True is returned if the names are the same, false is
+	 * returned otherwise.
+	 */
 	@Override
 	public boolean equals(Object o) {
 		if (o instanceof Station)
