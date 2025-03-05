@@ -18,6 +18,7 @@ public class Train {
 		{
 			goingNorth = true;
 		}
+		passengers = new Rider[TOTAL_PASSENGERS];
 	}
 	
 	public boolean goingNorth() {
@@ -84,13 +85,14 @@ public class Train {
 		}
 		for(int j = 0; j < passengerIndex - exited; j++)
 		{
-			if(passengers[j] instanceof Rider)
+			if(passengers[j] != null)
 			{
 				tmp[tmpInd] = passengers[j];
 				tmpInd++;
 			}
 		}
 		passengers = tmp;
+		passengerIndex -= exited;
 		return exiting;
 	}
 	

@@ -75,31 +75,64 @@ public class Railway {
 		while(curr != null)
 		{
 			Station currStation = curr.getData();
-			if(currStation.equals(stationNames[0]))
+			if(currStation.stationName().equals(stationNames[0])) // Alewife
 			{
-				//special case
+				sim = sim + currStation.toString();
+				Train t_S = currStation.southBoardTrain();
+				curr = curr.getNext();
+				currStation = curr.getData();
+				currStation.addTrain(t_S);
+				currStation.moveTrainNorthToSouth();
+				//t_S.updateStation(curr.getNext().getData().stationName());
+				//sim = sim + curr.getNext().getData().addTrain(t_S);
+				//while loop to move all trains from north into south queue?
+				
 			}
-			if(currStation.equals(stationNames[stationNames.length - 1]))
+			else if(currStation.stationName().equals(stationNames[stationNames.length - 1])) // Braintree
 			{
-				//special case
+				sim = sim + currStation.toString();
+				Train t_N = currStation.northBoardTrain();
+				curr = curr.getNext();
+				// currStation = curr.getData();
+				// currStation.addTrain(t_N);
+				currStation.moveTrainSouthToNorth();
+
+				// if((currStation.northBoundTrains).size() > 0)
+				// {
+				// 	Train t_N = currStation.southBoardTrain();
+				// 	t_N.updateStation(curr.getPrev().getData().stationName());
+				// 	sim = sim + curr.getPrev().getData().addTrain(t_N);
+				// }
+				// else if((currStation.southBoundTrains).size() > 0)
+				// {
+				// 	currStation.moveTrainSouthToNorth();
+				// 	//while loop to move all trains from north into south queue?
+				// }
 			}
 			else
 			{
-				if((currStation.northBoundTrains).size() > 0)
-				{
-					Train t_N = currStation.northBoardTrain();
-					t_N.updateStation(curr.getNext().getData().stationName());
-					sim = sim + t_N.disembarkPassengers();
-				}
-				if((currStation.southBoundTrains).size() > 0)
-				{
-					Train t_S = currStation.southBoardTrain();
-					t_S.updateStation(curr.getNext().getData().stationName());
-					sim = sim + t_S.disembarkPassengers();
-				}
+				sim = sim + currStation.toString();
+				Train t_N = currStation.northBoardTrain();
+				Train t_S = currStation.southBoardTrain();
+				curr = curr.getNext();
+				currStation = curr.getData();
+				currStation.addTrain(t_N);
+				currStation.addTrain(t_S);
+				// if((currStation.northBoundTrains).size() > 0)
+				// {
+				// 	Train t_N = currStation.northBoardTrain();
+				// 	t_N.updateStation(curr.getPrev().getData().stationName());
+				// 	sim = sim + curr.getPrev().getData().addTrain(t_N);
+				// }
+				// if((currStation.southBoundTrains).size() > 0)
+				// {
+				// 	Train t_S = currStation.southBoardTrain();
+				// 	t_S.updateStation(curr.getNext().getData().stationName());
+				// 	sim = sim + curr.getNext().getData().addTrain(t_S);
+				// }
 			}
-			sim = sim + currStation.toString();
-			curr = curr.getNext();
+			//curr = curr.getNext();
+			//sim = sim + currStation.toString();
 		}
 		return sim;
 	}

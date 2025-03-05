@@ -36,16 +36,20 @@ public class Station {
 	}
 	
 	public String addTrain(Train t) {
-		String enter = stationName() + " Disembarking Passengers:\n";
-		t.updateStation(stationName());
-		enter = enter + t.disembarkPassengers() + "\n";
-		if(t.goingNorth())
+		String enter = null;
+		if(t != null)
 		{
-			northBoundTrains.enqueue(t);
-		}
-		else
-		{
-			southBoundTrains.enqueue(t);
+			enter = stationName() + " Disembarking Passengers:\n";
+			//t.updateStation(stationName());
+			enter = enter + t.disembarkPassengers() + "\n";
+			if(t.goingNorth())
+			{
+				northBoundTrains.enqueue(t);
+			}
+			else
+			{
+				southBoundTrains.enqueue(t);
+			}
 		}
 		return enter;
 	}
