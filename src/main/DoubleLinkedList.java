@@ -33,28 +33,35 @@ public class DoubleLinkedList<T> {
 	}
 	
 	public T delete(T key) {
+		Node<T> trav = L;
 		T retKey = null;
-		Node<T> trav = new Node<T>(key);
-		if(size() > 0)
 		{
-			trav = L;
 			while(trav != null)
 			{
-				if(trav.getData() == key)
+				if(trav.getData().equals(key))
 				{
-					Node<T> tmp = trav.getPrev();
-					tmp.setNext(trav.getNext());
-					(tmp.getNext()).setPrev(tmp);
+					if(trav.getPrev() != null)
+					{
+						trav.getPrev().setNext(trav.getNext());
+					}
+					else
+					{
+						L = trav.getNext();
+					}
+					if(trav.getNext() != null)
+					{
+						trav.getNext().setPrev(trav.getPrev());
+					}
 					len--;
-					return retKey;
+					return trav.getData();
 				}
 				else
 				{
 					trav = trav.getNext();
 				}
 			}
+			return retKey;
 		}
-		return retKey;
 	}
 	
 	public T get(T key) {
@@ -83,6 +90,17 @@ public class DoubleLinkedList<T> {
 	
 	@Override
 	public String toString() {
-		return null;
+		String list = "";
+		Node<T> trav = L;
+		while(trav.getNext() != null)
+		{
+			list = list + trav.getData().toString() + ", ";
+			trav = trav.getNext();
+		}
+		if(trav != null)
+		{
+			list = list + trav.getData().toString();
+		}
+		return list;
 	}
 }
