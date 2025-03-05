@@ -1,3 +1,13 @@
+/**
+ * This class creates the runSimulation(), initTrains(String trainsFile), initRiders(String ridersFile),
+ * and initStations(String stationsFile) methods, and runs the main method.
+ * Known bugs: None
+ * 
+ * Liam Rittenburg
+ * liamrittenburg@brandeis.edu
+ * March 2025
+ * COSI 21A PA1
+ */
 package main;
 import java.util.Scanner;
 
@@ -22,6 +32,9 @@ public class MBTA {
 		runSimulation();
 	}
 	
+	/**
+	 * This method calls the Railway simulate() method the amount of times specified by TIMES.
+	 */
 	public static void runSimulation() {
 		int runs = TIMES;
 		for(int i = 0; i < runs; i++)
@@ -30,6 +43,11 @@ public class MBTA {
 		}
 	}
 	
+	/**
+	 * This method initializes trains in r based off of the argument file passed.
+	 * @param trainsFile
+	 * @throws FileNotFoundException
+	 */
 	public static void initTrains(String trainsFile) throws FileNotFoundException{
 		Scanner scanner = new Scanner(new File(trainsFile));
 		String nums = "01";
@@ -43,6 +61,11 @@ public class MBTA {
 		}
 	}
 	
+	/**
+	 * This method initializes Riders in r based off of the argument file passed.
+	 * @param ridersFile
+	 * @throws FileNotFoundException
+	 */
 	public static void initRiders(String ridersFile) throws FileNotFoundException{
 		Scanner scanner = new Scanner(new File(ridersFile));
 		while(scanner.hasNextLine())
@@ -55,6 +78,11 @@ public class MBTA {
 		}
 	}
 	
+	/**
+	 * This method initializes stations in r based off of the argument file passed.
+	 * @param stationsFile
+	 * @throws FileNotFoundException
+	 */
 	public static void initStations(String stationsFile) throws FileNotFoundException{
 		Scanner scanner = new Scanner(new File(stationsFile));
 		int stationIndex = 0;
