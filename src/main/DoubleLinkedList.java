@@ -92,14 +92,10 @@ public class DoubleLinkedList<T> {
 	public String toString() {
 		String list = "";
 		Node<T> trav = L;
-		while(trav.getNext() != null)
-		{
-			list = list + trav.getData().toString() + ", ";
-			trav = trav.getNext();
-		}
-		if(trav != null)
+		while(trav != null)
 		{
 			list = list + trav.getData().toString();
+			trav = trav.getNext();
 		}
 		return list;
 	}

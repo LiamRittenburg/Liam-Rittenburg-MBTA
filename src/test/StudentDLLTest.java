@@ -110,7 +110,11 @@ class StudentDLLTest {
 	@Test
 	void testToString()
 	{
-		
+		DoubleLinkedList<Station> l7 = new DoubleLinkedList<>();
+		Station s1 = new Station("Alewife");
+		l7.insert(s1);
+
+		assertEquals("Station: Alewife\n0 north-bound trains waiting\n0 south-bound trains waiting\n0 north-bound passengers waiting\n0 south-bound passengers waiting\n", l7.toString());
 	}
 
 }
