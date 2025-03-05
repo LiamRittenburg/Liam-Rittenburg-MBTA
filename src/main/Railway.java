@@ -70,66 +70,39 @@ public class Railway {
 	}
 	
 	public String simulate() {
-		String sim = "";
+		String sim = "Simulating one run of MBTA.\n";
 		Node<Station> curr = railway.getFirst();
 		while(curr != null)
 		{
 			Station currStation = curr.getData();
 			if(currStation.stationName().equals(stationNames[0])) // Alewife
 			{
-				sim = sim + currStation.toString();
+				sim = sim + currStation.toString() + "\n";
 				Train t_S = currStation.southBoardTrain();
+				currStation.moveTrainNorthToSouth();
 				curr = curr.getNext();
 				currStation = curr.getData();
-				currStation.addTrain(t_S);
-				currStation.moveTrainNorthToSouth();
-				//t_S.updateStation(curr.getNext().getData().stationName());
-				//sim = sim + curr.getNext().getData().addTrain(t_S);
+				sim = sim + currStation.addTrain(t_S);
 				//while loop to move all trains from north into south queue?
 				
 			}
 			else if(currStation.stationName().equals(stationNames[stationNames.length - 1])) // Braintree
 			{
-				sim = sim + currStation.toString();
+				sim = sim + currStation.toString() + "\n";
 				Train t_N = currStation.northBoardTrain();
-				curr = curr.getNext();
-				// currStation = curr.getData();
-				// currStation.addTrain(t_N);
+				sim = sim + curr.getPrev().getData().addTrain(t_N);
 				currStation.moveTrainSouthToNorth();
-
-				// if((currStation.northBoundTrains).size() > 0)
-				// {
-				// 	Train t_N = currStation.southBoardTrain();
-				// 	t_N.updateStation(curr.getPrev().getData().stationName());
-				// 	sim = sim + curr.getPrev().getData().addTrain(t_N);
-				// }
-				// else if((currStation.southBoundTrains).size() > 0)
-				// {
-				// 	currStation.moveTrainSouthToNorth();
-				// 	//while loop to move all trains from north into south queue?
-				// }
+				curr = curr.getNext();
 			}
 			else
 			{
-				sim = sim + currStation.toString();
+				sim = sim + currStation.toString() + "\n";
 				Train t_N = currStation.northBoardTrain();
 				Train t_S = currStation.southBoardTrain();
+				sim = sim + curr.getPrev().getData().addTrain(t_N);
 				curr = curr.getNext();
 				currStation = curr.getData();
-				currStation.addTrain(t_N);
-				currStation.addTrain(t_S);
-				// if((currStation.northBoundTrains).size() > 0)
-				// {
-				// 	Train t_N = currStation.northBoardTrain();
-				// 	t_N.updateStation(curr.getPrev().getData().stationName());
-				// 	sim = sim + curr.getPrev().getData().addTrain(t_N);
-				// }
-				// if((currStation.southBoundTrains).size() > 0)
-				// {
-				// 	Train t_S = currStation.southBoardTrain();
-				// 	t_S.updateStation(curr.getNext().getData().stationName());
-				// 	sim = sim + curr.getNext().getData().addTrain(t_S);
-				// }
+				sim = sim + currStation.addTrain(t_S);
 			}
 			//curr = curr.getNext();
 			//sim = sim + currStation.toString();

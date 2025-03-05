@@ -39,9 +39,14 @@ public class Station {
 		String enter = null;
 		if(t != null)
 		{
-			enter = stationName() + " Disembarking Passengers:\n";
+			String exiters = t.disembarkPassengers();
+			if(exiters.length() > 0)
+			{
+				enter = stationName() + ": \n";
+				enter = enter + exiters + "\n";
+			}
 			//t.updateStation(stationName());
-			enter = enter + t.disembarkPassengers() + "\n";
+			
 			if(t.goingNorth())
 			{
 				northBoundTrains.enqueue(t);
@@ -51,7 +56,13 @@ public class Station {
 				southBoundTrains.enqueue(t);
 			}
 		}
-		return enter;
+		if(enter == null)
+		{
+			return "";
+		}
+		else{
+			return enter;
+		}
 	}
 	
 	public Train southBoardTrain() 
