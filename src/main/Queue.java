@@ -20,6 +20,7 @@ public class Queue<T> {
 	public int numEntries;
 	
 	/**
+	 * Runtime: O(1)
 	 * This method constructs an empty Queue object that can hold "capacity" amount of elements.
 	 * @param capacity
 	 */
@@ -29,6 +30,7 @@ public class Queue<T> {
 	}
 	
 	/**
+	 * Runtime: O(1)
 	 * This method takes element as an argument, and adds the element to the queue as long as there is room.
 	 * If there is no room, the queue remains unchanged.
 	 * @param element
@@ -53,6 +55,7 @@ public class Queue<T> {
 	}
 	
 	/**
+	 * Runtime: O(1)
 	 * This method dequeues an element from the front of the queue, as long as the queue is not empty. If the queue is
 	 * empty, a NoSuchElementException is thrown.
 	 * @throws NoSuchElementException
@@ -72,6 +75,7 @@ public class Queue<T> {
 	}
 	
 	/**
+	 * Runtime: O(1)
 	 * This method returns the element at the front of the queue without removing it, as long as the queue is not empty.
 	 * If the queue is empty, a NoSuchElementException is thrown.
 	 * @return
@@ -89,6 +93,7 @@ public class Queue<T> {
 	}
 	
 	/**
+	 * Runtime: O(1)
 	 * This method returns the amount of elements that are in the queue.
 	 * @return
 	 */
@@ -97,6 +102,7 @@ public class Queue<T> {
 	}
 	
 	/**
+	 * Runtime: O(n)
 	 * This method returns a string representation of the queue.
 	 */
 	@Override

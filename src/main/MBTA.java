@@ -33,6 +33,7 @@ public class MBTA {
 	}
 	
 	/**
+	 * Runtime: O(n)
 	 * This method calls the Railway simulate() method the amount of times specified by TIMES.
 	 */
 	public static void runSimulation() {
@@ -44,6 +45,7 @@ public class MBTA {
 	}
 	
 	/**
+	 * Runtime: O(n)
 	 * This method initializes trains in r based off of the argument file passed.
 	 * @param trainsFile
 	 * @throws FileNotFoundException
@@ -62,6 +64,7 @@ public class MBTA {
 	}
 	
 	/**
+	 * Runtime: O(n)
 	 * This method initializes Riders in r based off of the argument file passed.
 	 * @param ridersFile
 	 * @throws FileNotFoundException
@@ -78,7 +81,7 @@ public class MBTA {
 		}
 	}
 	
-	/**
+	/**Runtime: O(n)
 	 * This method initializes stations in r based off of the argument file passed.
 	 * @param stationsFile
 	 * @throws FileNotFoundException

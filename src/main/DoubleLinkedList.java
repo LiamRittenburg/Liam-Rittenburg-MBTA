@@ -17,6 +17,7 @@ public class DoubleLinkedList<T> {
 	private int len;
 
 	/**
+	 * Runtime: O(1)
 	 * This method initializes an empty DoubleLinkedList object.
 	 */
 	public DoubleLinkedList() {
@@ -24,6 +25,7 @@ public class DoubleLinkedList<T> {
 	}
 	
 	/**
+	 * Runtime: O(1)
 	 * This method returns the first node of the linked list, and null if the list is empty
 	 */
 	public Node<T> getFirst() {
@@ -31,6 +33,7 @@ public class DoubleLinkedList<T> {
 	}
 	
 	/**
+	 * Runtime: O(1)
 	 * This method inserts a new node containing the argument (T element) and inserts it at the end of the list
 	 * @param element
 	 */
@@ -52,6 +55,7 @@ public class DoubleLinkedList<T> {
 	}
 	
 	/**
+	 * Runtime: O(n)
 	 * This method deletes the node specified by the argument (T key). If the node specified by (T key) exists in the list,
 	 * the node is deleted and returned. If it is not found, null is returned.
 	 * @param key
@@ -90,6 +94,7 @@ public class DoubleLinkedList<T> {
 	}
 	
 	/**
+	 * Runtime: O(n)
 	 * This method finds the first node specified by the argument (T key) and returns it. If there is no node specified
 	 * by (T key) in the list, null is returned.
 	 * @param key
@@ -116,6 +121,7 @@ public class DoubleLinkedList<T> {
 	}
 	
 	/**
+	 * Runtime: O(1)
 	 * This method returns the number of nodes in the linked list.
 	 * @return
 	 */
@@ -124,6 +130,7 @@ public class DoubleLinkedList<T> {
 	}
 	
 	/**
+	 * Runtime: O(n)
 	 * This method returns a string representation of the linked list.
 	 */
 	@Override

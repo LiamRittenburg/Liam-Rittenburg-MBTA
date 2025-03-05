@@ -18,6 +18,7 @@ public class Rider {
 	private boolean goingNorth;
 
 	/**
+	 * Runtime: O(1)
 	 * This constructor initializes a Rider object with ID equal to argument riderID, starting equal to argument
 	 * startingStation, and destination equal to argument destinationStation. The rider is defaulted to goingNorth() = false.
 	 * @param riderID
@@ -32,6 +33,7 @@ public class Rider {
 	}
 	
 	/**
+	 * Runtime: O(1)
 	 * This method returns the String representation of the Rider's starting station.
 	 * @return
 	 */
@@ -40,6 +42,7 @@ public class Rider {
 	}
 	
 	/**
+	 * Runtime: O(1)
 	 * This method returns the String representation of the Rider's destination station.
 	 * @return
 	 */
@@ -48,6 +51,7 @@ public class Rider {
 	}
 	
 	/**
+	 * Runtime: O(1)
 	 * This method returns the String representation of the Rider's ID.
 	 * @return
 	 */
@@ -56,6 +60,7 @@ public class Rider {
 	}
 	
 	/**
+	 * Runtime: O(1)
 	 * This method returns a boolean; true of the rider is heading north, and false if they are heading south.
 	 * @return
 	 */
@@ -64,6 +69,7 @@ public class Rider {
 	}
 	
 	/**
+	 * Runtime: O(1)
 	 * This method sets the goingNorth field to the opposite of its current state.
 	 */
 	public void swapDirection() {
@@ -78,6 +84,7 @@ public class Rider {
 	}
 	
 	/**
+	 * Runtime: O(1)
 	 * This method returns a string representation of a Rider object.
 	 */
 	@Override
@@ -86,6 +93,7 @@ public class Rider {
 	}
 	
 	/**
+	 * Runtime: O(1)
 	 * This method compares rider objects based on their ID. If their ID's are the same, this method returns true,
 	 * and false otherwise.
 	 */

@@ -16,6 +16,7 @@ public class Railway {
 	public String[] stationNames;
 	
 	/**
+	 * Runtime: O(1)
 	 * This constructor initializes a Railway object. An empty double linked list is initialized, and stationNames
 	 * is set to hold 18 elements.
 	 */
@@ -25,6 +26,7 @@ public class Railway {
 	}
 	
 	/**
+	 * Runtime: O(1)
 	 * This method adds a node holding the argument s to the railway linked list.
 	 * @param s
 	 */
@@ -33,6 +35,7 @@ public class Railway {
 	}
 	
 	/**
+	 * Runtime: O(n) (.get() is an O(n) method))
 	 * This method sets the rider in the appropriate direction (see setRiderDirection()), and adds them to the
 	 * appropriate queue of the appropriate starting station.
 	 * @param r
@@ -45,6 +48,7 @@ public class Railway {
 	}
 	
 	/**
+	 * Runtime: O(n) (.get() is an O(n) method))
 	 * This method adds the argument t to the appropriate train queue of the appropriate station.
 	 * @param t
 	 */
@@ -56,6 +60,7 @@ public class Railway {
 	}
 	
 	/**
+	 * Runtime: O(n) (n being stationNames.length)
 	 * This method determines whether the rider is heading north or south based on the rider's starting and 
 	 * ending destinations, and sets their goingNorth field accordingly.
 	 * @param r
@@ -102,6 +107,7 @@ public class Railway {
 	}
 	
 	/**
+	 * Runtime: O(n^m) (n being stationNames.length, m being TOTAL_PASSENGERS being called inside of the while loop)
 	 * This method runs one simulation of of a run through the railway. A string representing the log of that
 	 * simulation is returned.
 	 * @return
@@ -120,7 +126,6 @@ public class Railway {
 				curr = curr.getNext();
 				currStation = curr.getData();
 				sim = sim + currStation.addTrain(t_S);
-				//while loop to move all trains from north into south queue?
 				
 			}
 			else if(currStation.stationName().equals(stationNames[stationNames.length - 1])) // Braintree
@@ -147,6 +152,7 @@ public class Railway {
 	}
 	
 	/**
+	 * Runtime: O(n)
 	 * This method returns a string representation of the Railway object.
 	 */
 	@Override
