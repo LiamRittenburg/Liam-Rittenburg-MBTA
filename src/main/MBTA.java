@@ -24,6 +24,10 @@ public class MBTA {
 	static final int TIMES = 6;
 	static Railway r;
 	
+	/**
+	 * Runtime: O(N^2)
+	 * This method initializes all trains, riders and stations, and runs the runSimulation method.
+	 */
 	public static void main(String[] args) throws FileNotFoundException{
 		r = new Railway();
 		initStations("redLine.txt");
